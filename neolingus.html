@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BEOLINGUS · German ↔ English</title>
+<title>NEOLINGUS · German ↔ English</title>
 <!--FAVICON-->
 <style>
 /* colour scheme — taken from the old dict.tu-chemnitz.de main.css */
@@ -67,8 +67,8 @@ footer{max-width:1180px;margin:0 auto;padding:0 16px 24px;font-size:11px;color:v
 </head>
 <body>
 <header><div class="top">
-  <a class="logo" href="#" title="BEOLINGUS"><img src="/*__LOGO__*/" alt="" onerror="this.parentNode.remove()"></a>
-  <div class="brand"><b>BEOLINGUS</b><span>Deutsch ↔ English</span></div>
+  <a class="logo" href="#" title="NEOLINGUS"><img src="/*__LOGO__*/" alt="" onerror="this.parentNode.remove()"></a>
+  <div class="brand"><b>NEOLINGUS</b><span>Deutsch ↔ English</span></div>
   <form id="f" autocomplete="off">
     <input id="query" type="search" accesskey="q" spellcheck="false" autofocus placeholder="Wort / word">
     <div class="uml"><button type="button">ä</button><button type="button">ö</button><button type="button">ü</button><button type="button">ß</button></div>
@@ -78,7 +78,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 16px 24px;font-size:11px;color:v
 </div></header>
 <main id="out"><p class="note">Loading dictionary…</p></main>
 <footer id="foot"></footer>
-<script src="beolingus-data.js"></script>
+<script src="neolingus-data.js"></script>
 <script>
 "use strict";
 const $=s=>document.querySelector(s);
@@ -124,7 +124,7 @@ function init(text){
 }
 function noData(){
   $('#out').innerHTML=`<div class="note"><p><b>Dictionary file not found.</b></p>
-<p>Put <code>beolingus-data.js</code> in the same folder as this page. Make it by running <code>py build_beolingus.py</code> in the folder that holds <code>chemnitz_beolingus_de-en.txt</code>.</p>
+<p>Put <code>neolingus-data.js</code> in the same folder as this page. Make it by running <code>py build_neolingus.py</code> in the folder that holds <code>chemnitz_beolingus_de-en.txt</code>.</p>
 <p>Or load the .txt directly for this session: <input type="file" id="pick" accept=".txt"></p></div>`;
   $('#pick').addEventListener('change',ev=>{ const f=ev.target.files[0]; if(!f) return;
     $('#out').innerHTML='<p class="note">Reading file…</p>'; f.text().then(init); });
@@ -225,7 +225,7 @@ function more(){
   const b=$('#more'); if(CUR.shown>=CUR.list.length) b.remove(); else b.textContent=`more results (${(CUR.list.length-CUR.shown).toLocaleString()} left)`;
 }
 function home(){
-  document.title='BEOLINGUS · German ↔ English';
+  document.title='NEOLINGUS · German ↔ English';
   $('#out').innerHTML=`<div class="note"><p>Type a German or English word or phrase and press Enter. Matches in both languages are listed; exact matches come first, then whole words, then words that begin with the term, then words that contain it.</p>
 <p>Click any word in the results to look it up. <b>Esc</b> clears the search box; the browser's Back button returns to earlier searches.</p></div>`;
 }
@@ -236,7 +236,7 @@ function route(){
   const q=h.startsWith('q=')?h.slice(2):'';
   $('#query').value=q;
   if(!q.trim()){ CUR={q:'',all:[],list:[],shown:0,pos:'all'}; home(); return; }
-  document.title=q+' · BEOLINGUS';
+  document.title=q+' · NEOLINGUS';
   render(q,'all'); window.scrollTo(0,0);
 }
 function go(q){ q=q.trim(); const h=q?'#q='+encodeURIComponent(q):''; if(location.hash===h||(!h&&!location.hash)) route(); else location.hash=h; }
@@ -275,7 +275,7 @@ $('#out').addEventListener('click',ev=>{
   if(w) go(w);
 });
 
-if(typeof window.BEOLINGUS_DATA==='string'){ const d=window.BEOLINGUS_DATA; window.BEOLINGUS_DATA=null; init(d); }
+if(typeof window.NEOLINGUS_DATA==='string'){ const d=window.NEOLINGUS_DATA; window.NEOLINGUS_DATA=null; init(d); }
 else noData();
 </script>
 </body>

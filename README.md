@@ -1,7 +1,7 @@
-# BEOLINGUS — German ↔ English dictionary
+# NEOLINGUS — German ↔ English dictionary
 
 A single-page German–English dictionary that runs entirely in the browser, offline, with no server.
-It searches the full BEOLINGUS / Ding word list from TU Chemnitz: about 414,500 entries and over
+NEOLINGUS searches the full BEOLINGUS / Ding word list from TU Chemnitz: about 414,500 entries and over
 a million one-to-one translations.
 
 **Live page:** https://gmleuning.github.io/beolingusreboot/ (once GitHub Pages is switched on, see below)
@@ -14,7 +14,7 @@ a million one-to-one translations.
 - Grammar and subject tags (`{f}`, `{vt}`, `[ugs.]`, `[med.]` …) show what they mean when you hover over them
 - Click any word in the results to look that word up
 - Buttons for ä ö ü ß, for keyboards without them
-- Each search has its own address (`beolingus.html#q=Haus`), so you can bookmark it and the Back button works
+- Each search has its own address (`neolingus.html#q=Haus`), so you can bookmark it and the Back button works
 - Keyboard shortcuts: **/** jumps to the search box, **Esc** clears it
 - Colours taken from the classic dict.tu-chemnitz.de site; the layout also works on phones
 
@@ -22,7 +22,7 @@ a million one-to-one translations.
 
 **Online:** open the GitHub Pages address above.
 
-**Offline:** download the repository (**Code → Download ZIP**, or clone it) and open `beolingus.html`
+**Offline:** download the repository (**Code → Download ZIP**, or clone it) and open `neolingus.html`
 in any browser. No installation is needed.
 
 The page loads the whole dictionary (~28 MB) once when it opens, so the first load takes a moment.
@@ -32,18 +32,18 @@ Searches after that are instant.
 
 | File | Role |
 |---|---|
-| `beolingus.html` | The dictionary page (search, ranking, display) |
+| `neolingus.html` | The dictionary page (search, ranking, display) |
 | `main.css` | Stylesheet from the original TU Chemnitz site, kept for reference |
-| `index.html` | Sends visitors to `beolingus.html`, so the plain Pages address works |
+| `index.html` | Sends visitors to `neolingus.html`, so the plain Pages address works |
 | `chemnitz_beolingus_de-en.txt` | The source word list in Ding format (`German :: English`, one entry per line) |
-| `beolingus-data.js` | The same word list wrapped as JavaScript, which the page loads |
-| `build_beolingus.py` | Turns the `.txt` into `beolingus-data.js` |
+| `neolingus-data.js` | The same word list wrapped as JavaScript, which the page loads |
+| `build_neolingus.py` | Turns the `.txt` into `neolingus-data.js` |
 | `chemnitz format.html` | Reference copy of a TU Chemnitz results page that the layout was modelled on |
 
 ### Why there is a `.js` copy of the word list
 
 Browsers won't let a page opened from your own disk (`file://`) read a nearby `.txt` file, but they
-will load a nearby `<script>`. `beolingus-data.js` is just the text file stored as one JavaScript
+will load a nearby `<script>`. `neolingus-data.js` is just the text file stored as one JavaScript
 string, so the page works when opened straight from a folder. If the `.js` file is missing, the page
 offers to load the `.txt` by hand instead.
 
@@ -53,9 +53,9 @@ offers to load the `.txt` by hand instead.
    save it as `chemnitz_beolingus_de-en.txt`.
 2. Rebuild the data file:
 
-       py build_beolingus.py
+       py build_neolingus.py
 
-   (or `python3 build_beolingus.py` on macOS/Linux). It prints the number of entries and the file size.
+   (or `python3 build_neolingus.py` on macOS/Linux). It prints the number of entries and the file size.
 3. Commit and push both files.
 
 ## Switching on GitHub Pages
